@@ -1,0 +1,28 @@
+name: Run Selenium Tests on Merge to Main
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # You can choose a different runner OS if needed
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          cache: 'maven'
+
+      - name: Install dependencies
+        run: mvn install
+
+      - name: Run Selenium tests
+        run: mvn test
+
+        env:
+          SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+          SAUCE_URL: ${{ secrets.SAUCE_URL }}
