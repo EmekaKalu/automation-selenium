@@ -1,30 +1,25 @@
 import Base.TestBase;
 import Pages.LoginPage;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class login extends TestBase {
+
+    Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
+    String valid_username = dotenv.get("SAUCE_USERNAME");
+    String valid_password = dotenv.get("SAUCE_PASSWORD");
 
     @BeforeMethod
     public void pageObject() {
          loginPage = new LoginPage(driver);
     }
 
-//    @AfterMethod(alwaysRun = true)
-//    public void logout() {
-//        System.out.println("Attempting to logout");
-//        if (loginPage.menuButton.isDisplayed()){
-//            System.out.println("Logging out");
-//            loginPage.logout();
-//        } else {
-//            System.out.println("Already logged out");
-//        }
-//    }
 
     @Test(priority = 1)
     public void valid_login_Test() throws Exception {
         System.out.println("Logging in");
-        loginPage.valid_login("standard_user", "secret_sauce");
+        loginPage.valid_login(valid_username, valid_password);
         System.out.println("Logged in");
     }
 

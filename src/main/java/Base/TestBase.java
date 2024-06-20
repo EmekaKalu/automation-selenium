@@ -13,7 +13,7 @@ public abstract class TestBase {
     public static WebDriver driver;
     protected static LoginPage loginPage;
     Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
-    String website = dotenv.get("URL");
+    String website = dotenv.get("SAUCE_URL");
 
     @Parameters({"BrowserName","BrowserVersion","Platform"})
     @BeforeTest(alwaysRun = true)
