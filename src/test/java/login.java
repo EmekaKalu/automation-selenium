@@ -16,21 +16,21 @@ public class login extends TestBase {
     }
 
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "login")
     public void valid_login_Test() throws Exception {
         System.out.println("Logging in");
-        loginPage.valid_login("valid_username", valid_password);
+        loginPage.valid_login(valid_username, valid_password);
         System.out.println("Logged in");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, groups = "login")
     public void logout_Test() throws Exception {
         System.out.println("Logging out");
         loginPage.logout();
         System.out.println("Logged out");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, groups = "login")
     public void invalid_login_Test() throws Exception {
         System.out.println("Logging in");
         loginPage.invalid_login("standard_user", "invalid_password");

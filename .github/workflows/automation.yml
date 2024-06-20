@@ -25,7 +25,7 @@ jobs:
         run: mvn install
 
       - name: Run Selenium tests
-        run: mvn test
+        run:  mvn test -P login_test
 
         env:
           SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
