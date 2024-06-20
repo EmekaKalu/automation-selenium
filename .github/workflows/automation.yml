@@ -21,11 +21,15 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-      - name: 'Install Chrome browser'
-        run:
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb
-          sudo apt-get install
+      - name: Start Selenoid server
+        uses: n-ton4/selenoid-github-action@master
+        id: start-selenoid
+        continue-on-error: false
+        with:
+          version: 3.1.0
+          args: -limit 10
+          browsers: chrome
+          last-versions: 1
 
       - name: Install dependencies
         run: mvn install
