@@ -5,8 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.io.IOException;
-
 public class JavaScriptUtil extends TestBase {
 
     public JavaScriptUtil(WebDriver driver) {
