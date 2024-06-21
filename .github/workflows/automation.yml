@@ -18,13 +18,14 @@ jobs:
           java-version: 11
           distribution: 'temurin'
           cache: 'maven'
+
+      - name: Install dependencies
+        run: mvn install
+
       - name:  Install Google Chrome # Using shell script to install Google Chrome
         run:   |
           chmod +x ./scripts/InstallChrome.sh
                       ./scripts/InstallChrome.sh 
-
-      - name: Install dependencies
-        run: mvn install
 
       - name: Run Selenium tests
         run: mvn test -P login_test
