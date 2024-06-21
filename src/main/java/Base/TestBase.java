@@ -25,6 +25,9 @@ public abstract class TestBase {
        if (BrowserName.equalsIgnoreCase("Chrome")) {
            WebDriverManager.chromedriver().setup();
            ChromeOptions options = new ChromeOptions();
+           options.addArguments("--no-sandbox");
+           options.addArguments("--disable-dev-shm-usage");
+           options.addArguments("--headless");
            driver = new ChromeDriver(options);
            driver.manage().deleteAllCookies();
            System.out.println("Running on Chrome Browser");
