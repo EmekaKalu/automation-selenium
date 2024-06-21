@@ -19,7 +19,7 @@ public class login extends TestBase {
     @Test(priority = 1, groups = "login")
     public void valid_login_Test() throws Exception {
         System.out.println("Logging in");
-        loginPage.valid_login("valid_username", valid_password);
+        loginPage.valid_login(valid_username, valid_password);
         System.out.println("Logged in");
     }
 

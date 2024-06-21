@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: run-selenium-tests
 
 on:
   pull_request:
