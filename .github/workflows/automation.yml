@@ -21,13 +21,13 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
+      - name: Install dependencies
+        run: mvn install
+
       - name: Install Chrome
         run: |
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
-
-      - name: Install dependencies
-        run: mvn install
 
       - name: Run Selenium tests
         run:  mvn test -P login_test
